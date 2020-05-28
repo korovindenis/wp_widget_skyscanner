@@ -110,9 +110,8 @@
         display: none;
     }
 
-    .save_button {
-        width: 100%;
-        margin: 10% auto;
+    #wpfooter {
+        display: none;
     }
 }
 
@@ -128,11 +127,6 @@
     .descr_build__panel {
         display: inline-block;
         white-space: nowrap;
-    }
-
-    .save_button {
-        width: 40%;
-        margin: 10% 30%;
     }
 }
 
@@ -164,6 +158,10 @@
 
     .main {
         height: 80vh;
+    }
+
+    #wpfooter {
+        display: block;
     }
 }
 
@@ -215,4 +213,9 @@ a.navbar-brand {
 
 .nav-link {
     font-size: 13px;
+}
+
+.act_button {
+    margin: 5% auto;
+    display: inline;
 }

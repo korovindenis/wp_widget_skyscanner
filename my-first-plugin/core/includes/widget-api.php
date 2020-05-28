@@ -7,13 +7,17 @@ if (!class_exists('RestApiPlugin')) {
     class RestApiPlugin {
         private $plugSlug;
         private $plugPath;
+        //private $tableName;
 
         public function __construct($parameters){
             $this->plugSlug = $parameters->plugSlug;
             $this->plugPath = $parameters->plugPath;
+            //$this->tableName = $this->getTableName();
 
             register_activation_hook($this->plugPath, array($this, 'upgrade'));
             add_action('rest_api_init', array($this, 'registerRoutes'));
+            add_shortcode($this->plugSlug, array($this, 'addShortcode'));
+
         }
 
         public function registerRoutes() {
@@ -34,14 +38,14 @@ if (!class_exists('RestApiPlugin')) {
             $method = $request->get_method();
             $endpoint = $request->get_param('endpoint');
             $endpoint_handler_name = strtolower($method) . ucfirst($endpoint);
-/*
+
             if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
                 return new \WP_REST_Response(array(
                     'status' => false,
                     'error' => __('Scrape nonce check failed. Please try again.')
                 ), 400);
             }
-*/
+
             if (!method_exists($this, $endpoint_handler_name)) {
                 return new \WP_REST_Response(array(
                     'status' => false,
@@ -59,25 +63,36 @@ if (!class_exists('RestApiPlugin')) {
 
             $table_name = $this->getTableName();
 
-            $query = "SELECT backend_options FROM $table_name";
-
-            $settings = $wpdb->get_results($query, ARRAY_A);
-
-            if(is_null($settings) != true){
-                $result['default'] = true;
-            } else {
+            $wdgetCode = $wpdb->get_var("SELECT `frontend_options` FROM $table_name WHERE 1");
+            if(is_null($wdgetCode) != true && $wdgetCode != "NULL"){
                 $result['default'] = false;
-
-                //foreach ($list as &$widget) {
-                //    $options_raw_json = $widget['options'];
-                //    $widget['options'] = json_decode($options_raw_json);
-                //}
+                $result['wdgt'] = $wdgetCode;
+            } else {
+                $result['default'] = true;
             }
+            $result['default']=  $wdgetCode;
         }
 
         public function postWidgetFormSettings(&$result) {
+            global $wpdb;
+
+            $table_name = $this->getTableName();
             $data = $this->getPayloadData();
-            $result = array("status"=>"ok");
+            $status = $wpdb->query($wpdb->prepare("UPDATE $table_name SET frontend_options='%s'",$data['wdgt']));
+            $result = array("status"=>$status);
+        }
+
+        public function addShortcode() {
+            global $wpdb;
+
+            $table_name = $this->getTableName();
+
+            $wdgetCode = $wpdb->get_var("SELECT `frontend_options` FROM $table_name WHERE 1");
+            if(is_null($wdgetCode) != true && $wdgetCode != "NULL"){
+                return $wdgetCode;
+            } else {
+                return '<div data-skyscanner-widget="SearchWidget"></div><script src="https://widgets.skyscanner.net/widget-server/js/loader.js" async></script>';
+            }
         }
 
         public function upgrade() {
@@ -96,7 +111,6 @@ if (!class_exists('RestApiPlugin')) {
             $table_name = $this->getTableName();
 
             $wpdb->query("ALTER TABLE $table_name MODIFY `frontend_options` longtext COLLATE $table_collate NOT NULL;");
-            $wpdb->query("ALTER TABLE $table_name MODIFY `backend_options` longtext COLLATE $table_collate NOT NULL;");
         }
 
         public function tableExists() {
@@ -117,12 +131,10 @@ if (!class_exists('RestApiPlugin')) {
 
             $wpdb->query(
                 "CREATE TABLE $table_name (
-                    `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-                    `frontend_options` longtext COLLATE $table_collate NOT NULL,
-                    `backend_options` longtext COLLATE $table_collate NOT NULL,
-                    PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;"
+                    `frontend_options` longtext COLLATE $table_collate NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;"
             );
+            $wpdb->insert($table_name, array('frontend_options' => 'NULL'));
         }
 
         public function getTableName() {

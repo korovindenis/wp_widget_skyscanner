@@ -42,9 +42,11 @@ if (!class_exists('InitPlugin')) {
                 }
             }
         }
+
         private function getParamEnv($prm) {
             return str_replace('-', '_', $this->plugName) . '_' . $prm;
         }
+
         //public function addLinks($links) {
         //    $links[] = '<a href="' . esc_url(admin_url('admin.php?page=' . $this->plugName)) . '">Settings</a>';
            // $links[] = '<a href="http://codecanyon.net/user/elfsight/portfolio?ref=Elfsight" target="_blank">More plugins by Elfsight</a>';

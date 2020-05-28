@@ -1,0 +1,390 @@
+{
+	"observerUrl": "./preview/dist/weather-observer.js",
+	"preferences": {
+		"previewUpdateTimeout": 0,
+		"enableCustomCSS": true
+	},
+	"settings": {
+		"tabs": [
+			{
+				"id": "content",
+				"name": "Content",
+				"active": true
+			},
+			{
+				"id": "appearance",
+				"name": "Appearance"
+			}
+		],
+		"properties": [
+			{
+				"id": "location",
+				"name": "Location (Zip code, City, Coordinates)",
+				"description": "Set a location to display weather for. The option supports geographical location (city, region), zip code and coordinates.",
+				"tab": "content",
+				"type": "text",
+				"defaultValue": "New York",
+				"allowEmpty": true
+			},
+			{
+				"id": "lang",
+				"name": "Language",
+				"description": "Choose your widget's language.",
+				"tab": "content",
+				"type": "select",
+				"select": {
+					"options": [
+						{
+							"value": "ar",
+							"name": "العربية"
+						},
+						{
+							"value": "bg",
+							"name": "български език"
+						},
+						{
+							"value": "ca",
+							"name": "català"
+						},
+						{
+							"value": "cz",
+							"name": "čeština"
+						},
+						{
+							"value": "de",
+							"name": "Deutsch"
+						},
+						{
+							"value": "el",
+							"name": "ελληνικά"
+						},
+						{
+							"value": "en",
+							"name": "English"
+						},
+						{
+							"value": "fa",
+							"name": "فارسی"
+						},
+						{
+							"value": "fi",
+							"name": "suomi"
+						},
+						{
+							"value": "fr",
+							"name": "français"
+						},
+						{
+							"value": "gl",
+							"name": "Galego"
+						},
+						{
+							"value": "hr",
+							"name": "hrvatski"
+						},
+						{
+							"value": "hu",
+							"name": "magyar"
+						},
+						{
+							"value": "it",
+							"name": "Italiano"
+						},
+						{
+							"value": "ja",
+							"name": "日本語"
+						},
+						{
+							"value": "kr",
+							"name": "Kanuri"
+						},
+						{
+							"value": "la",
+							"name": "latine"
+						},
+						{
+							"value": "lt",
+							"name": "lietuvių kalba"
+						},
+						{
+							"value": "mk",
+							"name": "македонски"
+						},
+						{
+							"value": "nl",
+							"name": "Nederlands"
+						},
+						{
+							"value": "pl",
+							"name": "polski"
+						},
+						{
+							"value": "pt",
+							"name": "Português"
+						},
+						{
+							"value": "ro",
+							"name": "Română"
+						},
+						{
+							"value": "ru",
+							"name": "русский"
+						},
+						{
+							"value": "se",
+							"name": "Davvisámegiella"
+						},
+						{
+							"value": "sk",
+							"name": "Slovenčina"
+						},
+						{
+							"value": "sl",
+							"name": "Slovenščina"
+						},
+						{
+							"value": "es",
+							"name": "Español"
+						},
+						{
+							"value": "tr",
+							"name": "Türkçe"
+						},
+						{
+							"value": "ua",
+							"name": "Українська"
+						},
+						{
+							"value": "vi",
+							"name": "Tiếng Việt\t"
+						},
+						{
+							"value": "zh",
+							"name": "中文"
+						}
+					]
+				},
+				"defaultValue": "en"
+			},
+			{
+				"id": "units",
+				"name": "Temperature Unit",
+				"description": "Select how you'd like to display the temperature - Fahrenheit or Celcius.",
+				"tab": "content",
+				"type": "select-inline",
+				"selectInline": {
+					"options": [
+						{
+							"value": "imperial",
+							"name": "°F"
+						},
+						{
+							"value": "metric",
+							"name": "°C"
+						}
+					]
+				},
+				"defaultValue": "imperial"
+			},
+			{
+				"id": "windUnits",
+				"name": "Wind Speed Unit",
+				"description": "Select how you'd like to display wind speed.",
+				"tab": "content",
+				"type": "select",
+				"select": {
+					"options": [
+						{
+							"value": "miles",
+							"name": "Miles per hour (mph)"
+						},
+						{
+							"value": "metres",
+							"name": "Meters per second (m/s)"
+						},
+						{
+							"value": "kilometres",
+							"name": "Kilometers per hour (km/h)"
+						},
+						{
+							"value": "knots",
+							"name": "Knots (kts)"
+						}
+					]
+				},
+				"defaultValue": "miles"
+			},
+			{
+				"id": "pressureUnits",
+				"name": "Pressure Unit",
+				"description": "Select how you'd like to display pressure.",
+				"tab": "content",
+				"type": "select",
+				"select": {
+					"options": [
+						{
+							"value": "mb",
+							"name": "Millibars (mb)"
+						},
+						{
+							"value": "imperial",
+							"name": "Hectopascals (hPa)"
+						},
+						{
+							"value": "kPa",
+							"name": "Kilopascals (kPa)"
+						},
+						{
+							"value": "inHg",
+							"name": "Inches of Mercury (inHg)"
+						},
+						{
+							"value": "psi",
+							"name": "Pounds per Square Inch (psi)"
+						},
+						{
+							"value": "metric",
+							"name": "Millimeters of Mercury (mmHg / Torr)"
+						},
+						{
+							"value": "kg/cm²",
+							"name": "Kilograms per Square Centimetres"
+						}
+					]
+				},
+				"defaultValue": "mb"
+			},
+			{
+				"id": "layout",
+				"name": "What to display",
+				"description": "Select the type of forecast you want to display.",
+				"tab": "content",
+				"type": "select-visual",
+				"select": {
+					"options": [
+						{
+							"value": "currentTemperature",
+							"name": "Current Temperature",
+							"img": "https://files.elfsight.com/storage/_assets/weather/editor/current-temperature2x.png"
+						},
+						{
+							"value": "currentWeather",
+							"name": "Current Weather",
+							"img": "https://files.elfsight.com/storage/_assets/weather/editor/current-weather2x.png"
+						},
+						{
+							"value": "hourlyForecast",
+							"name": "Hourly Forecast",
+							"img": "https://files.elfsight.com/storage/_assets/weather/editor/hourly-forecast2x.png"
+						},
+						{
+							"value": "dailyForecast",
+							"name": "Daily Forecast",
+							"img": "https://files.elfsight.com/storage/_assets/weather/editor/daily-forecast2x.png"
+						},
+						{
+							"value": "detailedForecast",
+							"name": "Detailed Forecast",
+							"img": "https://files.elfsight.com/storage/_assets/weather/editor/detailed-forecast2x.png"
+						}
+					]
+				},
+				"defaultValue": "detailedForecast"
+			},
+			{
+				"id": "backgroundType",
+				"name": "Background",
+				"description": "Select background type - color or themed image.",
+				"tab": "appearance",
+				"type": "select-inline",
+				"selectInline": {
+					"options": [
+						{
+							"value": "color",
+							"name": "Color"
+						},
+						{
+							"value": "image",
+							"name": "Themed Image"
+						}
+					]
+				},
+				"defaultValue": "image"
+			},
+			{
+				"id": "backgroundColor",
+				"name": "Background Color",
+				"description": "Set background color for your widget.",
+				"tab": "appearance",
+				"type": "color",
+				"defaultValue": "rgb(77, 52, 243)"
+			},
+			{
+				"id": "dailyForecastBackgroundColor",
+				"name": "Daily Forecast Background Color",
+				"description": "Set daily forecast background color.",
+				"tab": "appearance",
+				"type": "color",
+				"defaultValue": "rgb(250, 250, 250)"
+			},
+			{
+				"id": "currentTemperatureSize",
+				"name": "Size (px)",
+				"description": "Set the widget size in pixels.",
+				"tab": "appearance",
+				"type": "slider",
+				"slider": {
+					"minLimit": 10,
+					"maxLimit": 50,
+					"floor": 10,
+					"ceil": 50,
+					"step": 1
+				},
+				"defaultValue": 24
+			},
+			{
+				"id": "currentWeatherSize",
+				"name": "Size (px)",
+				"description": "Set the widget size in pixels.",
+				"tab": "appearance",
+				"type": "slider",
+				"slider": {
+					"minLimit": 18,
+					"maxLimit": 50,
+					"floor": 18,
+					"ceil": 50,
+					"step": 1
+				},
+				"defaultValue": 24
+			},
+			{
+				"id": "iconsAnimation",
+				"name": "Enable Icons Animation",
+				"description": "Set this option to ON to activate weather icons animation.",
+				"tab": "appearance",
+				"type": "toggle",
+				"defaultValue": true
+			},
+			{
+				"id": "showUnits",
+				"name": "Display temperature scale",
+				"description": "Set this option to ON to display the temperature scale next to its value.",
+				"tab": "appearance",
+				"type": "toggle",
+				"defaultValue": false
+			},
+			{
+				"id": "showAllDays",
+				"name": "Expand forecast",
+				"description": "Set this option to ON to expand the forecast list to make all days visible at once.",
+				"tab": "appearance",
+				"type": "toggle",
+				"defaultValue": false
+			},
+			{
+				"tab": "appearance",
+				"type": "divider"
+			}
+		]
+	}
+}

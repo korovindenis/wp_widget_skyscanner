@@ -107,7 +107,8 @@ if (!class_exists('PluginAdmin')) {
                             <hr>
                             <p class="mb-0">Please, check plugin settings or reinstall him</p>
                         </div>
-                        <button type="button" class="btn btn-info save_button">Save widget</button>
+                        <button type="button" id="save_button" class="btn btn-info act_button">Save widget</button>
+                        <button type="button" id="reset_button" class="btn btn-info act_button">Reset widget</button>
                     </div>
                 </div>
                 <div class="row">

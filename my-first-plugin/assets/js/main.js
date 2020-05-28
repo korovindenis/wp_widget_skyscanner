@@ -2,7 +2,7 @@ var hideLoader = false;
 
 function setDefaultSettings(settingsJs){
     if(settingsJs.default != true){
-        console.log("set widget settings");
+        $('.skyscanner-widget-container').html(settingsJs.wdgt);
     }
     showContent();
 }
@@ -24,25 +24,27 @@ document.body.addEventListener("DOMSubtreeModified", function () {
             type: "GET",
             url: pluginParams.restApiUrl + "WidgetFormSettings/",
             beforeSend: function (e) {
-                e.setRequestHeader("X-WP-Nonce", wpApiSettings.nonce)
+                e.setRequestHeader("X-WP-Nonce", wpApiSettings.nonce);
             }
         }).done(function (e) {
-            setDefaultSettings(e)
+            setDefaultSettings(e);
         }).fail(function (data, textStatus, xhr) {
             console.log("Error WP-RestApi: ", data.status, " ", xhr);
         });
     }
 }, false);
 
-$(".save_button").on( "click", function() {
-    var id_box_msg = "#success_msg"
-    var show_time = 3000
+$("button").on( "click", function() {
+    var id_box_msg = "#success_msg";
+    var show_time = 3000;
+    var btnId = $(this).attr("id");
+    var sendData = (btnId == "save_button") ? $(".bpk-code").text() : "NULL";
 
     $(this).addClass("disabled");
     $.ajax({
             type: "POST",
             url: pluginParams.restApiUrl + "WidgetFormSettings/",
-            data: JSON.stringify({wdgt : $(".bpk-code").text()}),
+            data: JSON.stringify({wdgt : sendData }),
             dataType: "json",
             beforeSend: function (e) {
                 e.setRequestHeader("X-WP-Nonce", wpApiSettings.nonce)
@@ -50,6 +52,9 @@ $(".save_button").on( "click", function() {
             complete: function(){
                 $(id_box_msg).show();
                 setTimeout(() => {  $(id_box_msg).hide(); $(".save_button").removeClass("disabled"); }, show_time);
+                if (btnId == "reset_button"){
+                    location.reload(true);
+                }
             }
         }).fail(function (data, textStatus, xhr) {
             id_box_msg = "#failed_msg";
