@@ -19,7 +19,6 @@ if (!class_exists('MainWidget')) {
                 esc_html__( 'Sky Scanner Search', 'text_domain' ), // Name
                 array( 'description' => esc_html__( 'A SkyScanner Widget', 'text_domain' ), ) // Args
             );
-            //add_action( 'wp_enqueue_scripts', array($this, 'sky_scanner_frontend_js_load' ) );
         }
 
         /**
@@ -71,10 +70,6 @@ if (!class_exists('MainWidget')) {
             $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 
             return $instance;
-        }
-
-        public function sky_scanner_frontend_js_load(){
-             wp_enqueue_script('skyscanner-frot-end-form', plugins_url('/assets/skyscanner-front-end-form.js',$this->plugPath), array(), false, true);
         }
 
     } // class MainWidget

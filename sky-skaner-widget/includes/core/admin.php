@@ -1,6 +1,6 @@
 <?php
 
-if (!class_exists('PluginAdmin')) {
+if (!class_exists('PluginAdmin') && is_admin()) {
     class PluginAdmin {
         private $plugName;
         private $plugSlug;
@@ -123,12 +123,12 @@ if (!class_exists('PluginAdmin')) {
 <?
         }
         public function registerAssets() {
-            wp_register_style($this->plugSlug . "-bootstrap-admin", plugins_url('/assets/css/bootstrap.min.css', $this->plugPath), array(), "4.3.1");
-            wp_register_style($this->plugSlug . "-main-admin", plugins_url('/assets/css/main.css', $this->plugPath), array(), $this->version);
-            wp_register_style($this->plugSlug . "-loader-admin", plugins_url('/assets/css/loader.css', $this->plugPath), array(), $this->version);
-            wp_register_script($this->plugSlug . "-bootstrapjs-admin", plugins_url('assets/js/bootstrap.min.js', $this->plugPath), array('jquery'), "4.0.0", true);
-            wp_register_script($this->plugSlug . "-jq-admin", plugins_url('assets/js/jquery-3.5.1.min.js', $this->plugPath), array('jquery'), "3.5.1", true);
-            wp_register_script($this->plugSlug . "-mainjs-admin", plugins_url('assets/js/main.js', $this->plugPath), array('jquery','wp-api',$this->plugSlug . "-jq-admin"), $this->version, true);
+            wp_register_style($this->plugSlug . "-bootstrap-admin", plugins_url('/admin/css/bootstrap.min.css', $this->plugPath), array(), "4.3.1");
+            wp_register_style($this->plugSlug . "-main-admin", plugins_url('/admin/css/main.css', $this->plugPath), array(), $this->version);
+            wp_register_style($this->plugSlug . "-loader-admin", plugins_url('/admin/css/loader.css', $this->plugPath), array(), $this->version);
+            wp_register_script($this->plugSlug . "-bootstrapjs-admin", plugins_url('admin/js/bootstrap.min.js', $this->plugPath), array('jquery'), "4.0.0", true);
+            wp_register_script($this->plugSlug . "-jq-admin", plugins_url('admin/js/jquery-3.5.1.min.js', $this->plugPath), array('jquery'), "3.5.1", true);
+            wp_register_script($this->plugSlug . "-mainjs-admin", plugins_url('admin/js/main.js', $this->plugPath), array('jquery','wp-api',$this->plugSlug . "-jq-admin"), $this->version, true);
 
         }
         public function enqueueAssets($hook){
