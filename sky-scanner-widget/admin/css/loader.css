@@ -1,0 +1,27 @@
+/*-----------------------------------------------------------------------------------
+
+ Plugin Name: Sky Scanner widget
+ Plugin URI: https://codecanyon.net/user/skyengineers/
+ Description: Simple Flight Search Widget
+ Author: SkyEngineers
+ Author URI: https://codecanyon.net/user/skyengineers/
+ Version: 1.0
+
+-----------------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------
+
+ == Table Of Content
+
+	01 Background color for input
+ 
+---------------------------------------------------------------- */
+/* ----------------------------------------------------------------
+     [ 01 Background color for input ]
+-----------------------------------------------------------------*/
+div[class*="AddParamRow_AddParamRow__addRow"] {
+    background-color: #fff;
+}
+
+/* ----------------------------------------------------------------
+     [ End Background color for input ]
+-----------------------------------------------------------------*/
