@@ -1,0 +1,5 @@
+# Change Log
+
+## June  01, 2020 - Version 1.0.0 
+
+ * Sky Scanner WordPress plugin release

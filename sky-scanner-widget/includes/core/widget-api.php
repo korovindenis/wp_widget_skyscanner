@@ -120,7 +120,7 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             $is_old_sql = version_compare($wpdb->db_version(), '5.5.3', '<=');
             $table_collate = $is_old_sql ? 'utf8_general_ci' : 'utf8mb4_general_ci';
 
-            $wpdb->query('ALTER TABLE ' . $this->tableName . " MODIFY `frontend_options` longtext COLLATE $table_collate NOT NULL;");
+            $wpdb->query('ALTER TABLE ' . $this->tableName . " MODIFY `frontend_options` longtext COLLATE $table_collate;");
         }
 
         /**
@@ -146,10 +146,12 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
 
             $wpdb->query(
                 'CREATE TABLE ' . $this->tableName . " (
-                    `frontend_options` longtext COLLATE $table_collate NOT NULL
+                    `frontend_options` longtext COLLATE $table_collate
                 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=0;"
             );
-            $wpdb->insert($table_name, ['frontend_options' => 'NULL']);
+            $wpdb->query(
+                'INSERT INTO ' . $this->tableName . " (`frontend_options`) VALUES ('NULL')"
+            );
         }
 
         /**
