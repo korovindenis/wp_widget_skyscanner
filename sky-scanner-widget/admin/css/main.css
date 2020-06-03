@@ -168,7 +168,7 @@
     }
 
     .h2_logo {
-        font-size 36px;
+        font-size: 36px;
     }
 
     .descr_build__panel {
@@ -267,9 +267,8 @@
 .descr_build {
     width: 100%;
     margin-top: 15px;
-    font-size: 15px;
     color: #808d9b;
-    font: normal 14px/1.555 Roboto, Arial, Sans-Serif;
+    font: normal 16px/1.555 Roboto, Arial, Sans-Serif;
 }
 
 /* ----------------------------------------------------------------

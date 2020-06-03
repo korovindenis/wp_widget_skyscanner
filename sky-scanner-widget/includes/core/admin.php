@@ -1,8 +1,6 @@
 <?php
 
-if (!defined('ABSPATH') || !is_admin()){
-    header('Status: 403 Forbidden');
-    header('HTTP/1.1 403 Forbidden');
+if (!defined('ABSPATH')){
     exit;
 }
 /**
@@ -101,8 +99,8 @@ if (!class_exists('SkSknr_PluginAdmin')) {
                         <h2 class="h2_logo">
                         <?php echo esc_html__('Widget Builder', $this->textDomain); ?>
                         </h2>
-                        <?php echo __('<p class="descr_build"> Here you can play around with parameters of widgets and construct <b>Simple Flight Search Widget of your preference</b><span class="descr_build__panel">&nbsp;using the side panel on the left</span>.
-                            <br>There are many of them, make sure you find the right one for you! </p>'); ?>
+                        <?php echo __('<p class="descr_build">On this page, you can customize the flight search widget as you wish.<span class="descr_build__panel">&nbsp;Just use the panel on the left!</span>
+                            <br>There are many setting options—make sure you try them all!</p>'); ?>
                     </div>
                 </div>
                 <div class="row">

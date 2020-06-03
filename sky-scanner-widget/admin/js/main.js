@@ -59,10 +59,11 @@ document.body.addEventListener("DOMSubtreeModified", function () {
 $("button").on("click", function () {
     var idBoxMsg = "#success_msg";
     var showTime = 3000;
-    var btnId = $(this).attr("id");
+    var currentBtn = this;
+    var btnId = $(currentBtn).attr("id");
     var sendData = (btnId == "save_button") ? $(".bpk-code").text() : "NULL";
 
-    $(this).addClass("disabled");
+    $(currentBtn).addClass("disabled");
     $.ajax({
         type: "POST",
         url: pluginParams.restApiUrl + "WidgetFormSettings/",
@@ -77,7 +78,7 @@ $("button").on("click", function () {
             $(idBoxMsg).show();
             setTimeout(() => {
                 $(idBoxMsg).hide();
-                $(".save_button").removeClass("disabled");
+                $(currentBtn).removeClass("disabled");
             }, showTime);
             if (btnId == "reset_button") {
                 location.reload(true);
