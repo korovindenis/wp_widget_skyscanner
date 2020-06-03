@@ -1,9 +1,4 @@
 <?php
-
-//if (!defined('ABSPATH')) {
-//    exit;
-//}
-
 /**
  * An REST API is an Application Programming Interface - SkSknr_RestApiPlugin
  */
@@ -29,6 +24,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             add_shortcode($this->plugSlug, [$this, 'addShortcode']);
         }
 
+        /**
+         * Wordpress restapi
+         */
         public function registerRoutes() {
             register_rest_route($this->plugSlug, '/admin/widgets/(?P<endpoint>[\w-]+)', [
                 'methods' => 'GET, POST',
@@ -67,6 +65,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             return new \WP_REST_Response($result, 200);
         }
 
+        /**
+         * Get widget-html for backend
+         */
         public function getWidgetFormSettings(&$result) {
             global $wpdb;
 
@@ -80,6 +81,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             $result['default'] = $wdgetCode;
         }
 
+        /**
+         * Save widget-html for frontend
+         */
         public function postWidgetFormSettings(&$result) {
             global $wpdb;
 
@@ -88,6 +92,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             $result = ['status' => $status];
         }
 
+        /**
+        * Add Wordpress shortcode
+        */
         public function addShortcode() {
             global $wpdb;
 
@@ -116,6 +123,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             $wpdb->query('ALTER TABLE ' . $this->tableName . " MODIFY `frontend_options` longtext COLLATE $table_collate NOT NULL;");
         }
 
+        /**
+         * Check exist table in database
+         */
         public function tableExists() {
             global $wpdb;
 
@@ -125,6 +135,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             ));
         }
 
+        /**
+         * Create table in database
+         */
         public function createTable() {
             global $wpdb;
 
@@ -139,6 +152,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             $wpdb->insert($table_name, ['frontend_options' => 'NULL']);
         }
 
+        /**
+         * Get table name from database
+         */
         public function getTableName() {
             global $wpdb;
 

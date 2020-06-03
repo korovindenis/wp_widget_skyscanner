@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('ABSPATH')){
+if (!defined('ABSPATH')) {
     exit;
 }
 /**
@@ -52,17 +52,19 @@ if (!class_exists('SkSknr_PluginAdmin')) {
          * Admin page content
          */
         public function getPage() {
-        ?>
+            ?>
+<!-- =================== Start SkyScannerWidget (main block) =================== -->
 <script>
     window.pluginParams = {
         restApiUrl: '<?php echo rest_url($this->plugSlug . '/admin/widgets/') ?>',
     }
-
 </script>
+<!-- =================== Start widget block =================== -->
 <div class="skyscanner_widget">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#">
-        <?php echo esc_html__($this->plugName . " Widget", $this->textDomain); ?>
-        </a>
+    
+    <!-- =================== Start Menu =================== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><?php echo esc_html__($this->plugName . ' Widget', $this->textDomain); ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
@@ -70,11 +72,15 @@ if (!class_exists('SkSknr_PluginAdmin')) {
                 <li class="nav-item"> <a class="nav-link" target="_blank" href="https://codecanyon.net/user/skyengineers/"><?php echo esc_html__('Need Help?', $this->textDomain); ?></a> </li>
                 <li class="nav-item"> <a class="nav-link" target="_blank" href="https://codecanyon.net/user/skyengineers/"><?php echo esc_html__('Author', $this->textDomain); ?></a> </li>
                 <div class="dropdown-divider"></div>
-                <li class="nav-item"> <a class="nav-link disabled" href="#"><?php echo esc_html__('Version', $this->textDomain) . " " . $this->version; ?></a> </li>
+                <li class="nav-item"> <a class="nav-link disabled" href="#"><?php echo esc_html__('Version', $this->textDomain) . ' ' . $this->version; ?></a> </li>
             </ul>
         </div>
     </nav>
+    <!-- =================== End Menu =================== -->
+
     <div class="main_background">
+        
+        <!-- =================== Start white-box =================== -->
         <div class="main">
             <div class="loader">
                 <div class="circle">
@@ -94,6 +100,8 @@ if (!class_exists('SkSknr_PluginAdmin')) {
                 </div>
             </div>
             <div id="main_container" class="container off_data">
+                
+                <!-- =================== Start description =================== -->
                 <div class="row">
                     <div class="col">
                         <h2 class="h2_logo">
@@ -103,17 +111,24 @@ if (!class_exists('SkSknr_PluginAdmin')) {
                             <br>There are many setting options—make sure you try them all!</p>'); ?>
                     </div>
                 </div>
+                <!-- =================== End description =================== -->
+
                 <div class="row">
                     <div class="col">
                         <hr>
                     </div>
                 </div>
+
+                <!-- =================== Start block with settings widget =================== -->
                 <div class="row">
                     <div class="col">
                         <oc-component href="https://gateway.skyscanner.net/oc-registry/affiliate-widgets-constructor/?defaultWidget=SearchWidget&amp;paramSet=public&amp;hiddenParams=skyscannerWidget"></oc-component>
                         <script src="https://gateway.skyscanner.net/oc-registry/oc-client/client.js"></script>
                     </div>
                 </div>
+                <!-- =================== End block with settings widget =================== -->
+
+                <!-- =================== Start block with messages and save,reload button =================== -->
                 <div class="row">
                     <div class="col">
                         <div id="success_msg" class="alert alert-success alert-dismissible" role="alert">
@@ -124,21 +139,29 @@ if (!class_exists('SkSknr_PluginAdmin')) {
                             <hr>
                             <p class="mb-0"><?php echo esc_html__('Please, check plugin settings or reinstall him', $this->textDomain); ?></p>
                         </div>
-                        <?php if(current_user_can('manage_options')) { ?>
+                        <?php if (current_user_can('manage_options')) { ?>
                         <button type="button" id="save_button" class="btn btn-info act_button"><?php echo esc_html__('Save widget', $this->textDomain); ?></button>
                         <button type="button" id="reset_button" class="btn btn-info act_button"><?php echo esc_html__('Reset widget', $this->textDomain); ?></button>
                         <?php } ?>
                     </div>
                 </div>
+                <!-- =================== End block with messages and save,reload button =================== -->
+
+                <!-- =================== Start Terms and Conditions =================== -->
                 <div class="row">
                     <div class="col">
                     <?php echo __('<p>By using Skyscanner\'s Widgets you agree to our <a target="_blank" href="https://www.partners.skyscanner.net/affiliates/travel-widgets-terms-and-conditions/">Terms and Conditions</a>.</p>', $this->textDomain); ?>
                     </div>
                 </div>
+                <!-- =================== End Terms and Conditions =================== -->
+
             </div>
         </div>
+         <!-- =================== End white-box =================== -->
     </div>
 </div>
+<!-- =================== End widget block =================== -->
+<!-- =================== End SkyScannerWidget (main block) =================== -->
 <?php
         }
 
@@ -163,6 +186,9 @@ if (!class_exists('SkSknr_PluginAdmin')) {
             }
         }
 
+        /**
+         * Set .css,.js in footer
+         */
         public function setInFooter() {
             wp_enqueue_style($this->plugSlug . '-loader-admin');
             wp_enqueue_script($this->plugSlug . '-bootstrapjs-admin');

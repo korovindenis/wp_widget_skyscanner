@@ -48,7 +48,7 @@ if (!class_exists('SkSknr_InitPlugin')) {
                 $this->admin = new SkSknr_PluginAdmin($this);
                 add_action('plugin_action_links_' . $this->plugBaseName, [$this, 'addLinks']);
             }
-            add_action('plugins_loaded', array($this, 'loadLanguages'));
+            add_action('plugins_loaded', [$this, 'loadLanguages']);
             add_action('widgets_init', [$this, 'registerWidget']);
         }
 

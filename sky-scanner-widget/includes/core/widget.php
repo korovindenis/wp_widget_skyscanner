@@ -31,7 +31,6 @@ if (!class_exists('SkSknr_MainWidget')) {
 
         /**
          * Front-end display of widget.
-         *
          */
         public function widget($args, $instance) {
             echo $args['before_widget'];
@@ -40,7 +39,6 @@ if (!class_exists('SkSknr_MainWidget')) {
 
         /**
          * Back-end widget form.
-         *
          */
         public function form($instance) {
             ?>
