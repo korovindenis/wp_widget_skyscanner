@@ -23,6 +23,7 @@ function setDefaultSettings(settingsJs) {
     $("[class^=FormRow_FormRow]").first().empty();
     $("[class^=BpkText_bpk]").empty();
     $("[class*=codeContainer]").hide();
+    $("div[class^=BpkRadio_bpk-radio").hide();
     $("[class^=ExtraActionsBlock_ExtraActionsBlock]").empty();
     $(".loader").hide();
     $("#main_container").removeClass("off_data");

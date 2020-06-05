@@ -1,0 +1,151 @@
+# Copyright (C) 2020 skyengineers
+# This file is distributed under the same license as the SkyScanner plugin.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: "
+"SkyScanner Widget\n"
+"POT-Creation-Date: "
+"2020-06-05 19:30+0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: "
+"skyengineers\n"
+"Language-Team: "
+"skyengineers\n"
+"Report-Msgid-Bugs-To: "
+"skyengineers\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/"
+"plain; charset=UTF-8\n"
+"Content-Transfer-"
+"Encoding: 8bit\n"
+"Plural-Forms: "
+"nplurals=2; plural=n != "
+"1;\n"
+"X-Textdomain-Support: "
+"yesX-Generator: Poedit "
+"1.6.4\n"
+"X-Poedit-SourceCharset: "
+"UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;esc_html_e;"
+"esc_html_x:1,2c;"
+"esc_html__;esc_attr_e;"
+"esc_attr_x:1,2c;"
+"esc_attr__;_ex:1,2c;"
+"_nx:4c,1,2;"
+"_nx_noop:4c,1,2;_x:1,2c;"
+"_n:1,2;_n_noop:1,2;"
+"__ngettext:1,2;"
+"__ngettext_noop:1,2;_c,"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"Language: en_US\n"
+"X-Generator: Poedit "
+"2.3.1\n"
+"X-Poedit-"
+"SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: "
+"includes\n"
+
+#: includes/core/admin.php:67
+msgid " Widget"
+msgstr ""
+
+#: includes/core/admin.php:71
+msgid "Documentation"
+msgstr ""
+
+#: includes/core/admin.php:72
+msgid "Need Help?"
+msgstr ""
+
+#: includes/core/admin.php:73
+msgid "Author"
+msgstr ""
+
+#: includes/core/admin.php:75
+msgid "Version"
+msgstr ""
+
+#: includes/core/admin.php:108
+msgid "Widget Builder"
+msgstr ""
+
+#: includes/core/admin.php:110
+msgid ""
+"On this page, you can "
+"customize the flight "
+"search widget as you "
+"wish."
+msgstr ""
+
+#: includes/core/admin.php:110
+msgid ""
+"Just use the panel on "
+"the left!"
+msgstr ""
+
+#: includes/core/admin.php:112
+msgid ""
+"There are many setting "
+"options—make sure you "
+"try them all!"
+msgstr ""
+
+#: includes/core/admin.php:136
+msgid "Successfully Saved"
+msgstr ""
+
+#: includes/core/admin.php:141
+msgid ""
+"Please, check plugin "
+"settings or reinstall "
+"him"
+msgstr ""
+
+#: includes/core/admin.php:144
+msgid "Save widget"
+msgstr ""
+
+#: includes/core/admin.php:145
+msgid "Reset widget"
+msgstr ""
+
+#: includes/core/admin.php:154
+msgid ""
+"By using Skyscanner's "
+"Widgets you agree to our"
+msgstr ""
+
+#: includes/core/admin.php:154
+msgid ""
+"Terms and Conditions."
+msgstr ""
+
+#: includes/core/widget-api.php:54
+msgid ""
+"Scrape nonce check "
+"failed. Please try "
+"again."
+msgstr ""
+
+#: includes/core/widget.php:46
+msgid "Widget settings"
+msgstr ""
+
+#: includes/sky-scanner-plugin.php:81
+msgid "Settings"
+msgstr ""
+
+#: includes/sky-scanner-plugin.php:82
+msgid "More plugins by"
+msgstr ""
+
+#: sky-scanner-widget.php:32
+msgid "Sky Scanner"
+msgstr ""
+
+#: sky-scanner-widget.php:33
+msgid "skyscannerwidget"
+msgstr ""

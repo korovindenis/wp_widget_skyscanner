@@ -20,6 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 require_once 'includes/sky-scanner-plugin.php';
+$textDomain = "sky-scanner-widget";
 
 /**
  * Initializing the main class
@@ -27,9 +28,9 @@ require_once 'includes/sky-scanner-plugin.php';
 new SkSknr_InitPlugin([
     'version' => '1.0.0',
     'icon_menu' => plugins_url('admin/images/icon_menu.png', __FILE__),
-    'text_domain' => 'sky-scanner-widget',
-    'plugin_name' => esc_html__('Sky Scanner'),
-    'plugin_slug' => esc_html__('skyscannerwidget'),
+    'text_domain' => $textDomain,
+    'plugin_name' => esc_html__('Sky Scanner', $textDomain),
+    'plugin_slug' => esc_html__('skyscannerwidget', $textDomain),
     'plugin_path' => __FILE__,
     'plugin_basename' => plugin_basename(__FILE__)
 ]);

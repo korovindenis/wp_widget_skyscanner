@@ -12,7 +12,8 @@
 
  == Table Of Content
 
-	01 Background color for input
+     01 Background color for input
+     02 Display off for not checked radio-button
  
 ---------------------------------------------------------------- */
 /* ----------------------------------------------------------------
@@ -24,4 +25,14 @@ div[class*="AddParamRow_AddParamRow__addRow"] {
 
 /* ----------------------------------------------------------------
      [ End Background color for input ]
+-----------------------------------------------------------------*/
+/* ----------------------------------------------------------------
+     [ 02 Display off for not checked radio-button ]
+-----------------------------------------------------------------*/
+input[class^="bpk-radio__input"][type="radio"]:checked::before {
+     display: none;
+}
+
+/* ----------------------------------------------------------------
+     [ End display off for not checked radio-button ]
 -----------------------------------------------------------------*/

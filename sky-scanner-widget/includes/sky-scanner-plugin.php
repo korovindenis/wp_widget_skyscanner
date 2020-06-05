@@ -78,8 +78,8 @@ if (!class_exists('SkSknr_InitPlugin')) {
          * Filters the list of action links displayed for a specific plugin in the Plugins list table.
          */
         public function addLinks($links) {
-            $links[] = '<a href="' . esc_url(admin_url('admin.php?page=' . $this->plugSlug)) . '">' . __('Settings', $this->textDomain) . '</a>';
-            $links[] = '<a href="https://codecanyon.net/user/skyengineers/" target="_blank">' . __('More plugins by', $this->textDomain) . ' SkyEngineers</a>';
+            $links[] = '<a href="' . esc_url(admin_url('admin.php?page=' . $this->plugSlug)) . '">' . esc_html__('Settings', $this->textDomain) . '</a>';
+            $links[] = '<a href="https://codecanyon.net/user/skyengineers/" target="_blank">' . esc_html__('More plugins by', $this->textDomain) . ' SkyEngineers</a>';
 
             return $links;
         }

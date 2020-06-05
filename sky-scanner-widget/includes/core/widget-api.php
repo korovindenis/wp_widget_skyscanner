@@ -7,6 +7,7 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
         private $plugSlug;
         private $plugPath;
         private $tableName;
+        private $textDomain;
 
         /**
          * Register:
@@ -17,8 +18,9 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
         public function __construct($parameters) {
             $this->plugSlug = $parameters->plugSlug;
             $this->plugPath = $parameters->plugPath;
+            $this->textDomain = $parameters->textDomain;
             $this->tableName = $this->getTableName();
-
+            
             register_activation_hook($this->plugPath, [$this, 'upgrade']);
             add_action('rest_api_init', [$this, 'registerRoutes']);
             add_shortcode($this->plugSlug, [$this, 'addShortcode']);
@@ -49,7 +51,7 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
                 return new \WP_REST_Response([
                     'status' => false,
-                    'error' => __('Scrape nonce check failed. Please try again.')
+                    'error' => esc_html__('Scrape nonce check failed. Please try again.', $this->textDomain)
                 ], 400);
             }
 
