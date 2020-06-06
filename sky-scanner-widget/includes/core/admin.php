@@ -65,14 +65,14 @@ if (!class_exists('SkSknr_PluginAdmin')) {
     <!-- =================== Start Menu =================== -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#"><?php echo esc_html__($this->plugName . ' Widget', $this->textDomain); ?></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"> <a class="nav-link" target="_blank" href="https://www.partners.skyscanner.net/affiliates/widgets-documentation/simple-flight-search-widget"><?php echo esc_html__('Documentation', $this->textDomain); ?></a> </li>
                 <li class="nav-item"> <a class="nav-link" target="_blank" href="https://codecanyon.net/user/skyengineers/"><?php echo esc_html__('Need Help?', $this->textDomain); ?></a> </li>
                 <li class="nav-item"> <a class="nav-link" target="_blank" href="https://codecanyon.net/user/skyengineers/"><?php echo esc_html__('Author', $this->textDomain); ?></a> </li>
                 <div class="dropdown-divider"></div>
-                <li class="nav-item"> <a class="nav-link disabled" href="#"><?php echo esc_html__('Version', $this->textDomain) . ' ' . $this->version; ?></a> </li>
+                <li class="nav-item"><a class="nav-link disabled" href="#"><?php echo esc_html__('Version', $this->textDomain) . ' ' . $this->version; ?></a></li>
             </ul>
         </div>
     </nav>
@@ -170,17 +170,16 @@ if (!class_exists('SkSknr_PluginAdmin')) {
          * Add script and css
          */
         public function registerAssets() {
-            wp_register_style('bootstrap-css', plugins_url('/admin/css/bootstrap.min.css', $this->plugPath), [], '4.3.1');
+            wp_register_style('bootstrap', plugins_url('/admin/css/bootstrap.min.css', $this->plugPath), [], '4.3.1');
             wp_register_style($this->plugSlug . '-main-admin-css', plugins_url('/admin/css/main.css', $this->plugPath), [], $this->version);
-            wp_register_style($this->plugSlug . '-loader-admin-css', plugins_url('/admin/css/loader.css', $this->plugPath), [], $this->version);
-            wp_register_script('bootstrap-js', plugins_url('admin/js/bootstrap.min.js', $this->plugPath), ['jquery'], '4.0.0', true);
-            wp_register_script('jquery-3.5', plugins_url('admin/js/jquery-3.5.1.min.js', $this->plugPath), ['jquery'], '3.5.1', true);
-            wp_register_script($this->plugSlug . '-main-admin-js', plugins_url('admin/js/main.js', $this->plugPath), ['jquery', 'wp-api', 'jquery-3.5'], $this->version, true);
+            wp_register_style($this->plugSlug . '-loader-admin', plugins_url('/admin/css/loader.css', $this->plugPath), [], $this->version);
+            wp_register_script('bootstrap', plugins_url('admin/js/bootstrap.min.js', $this->plugPath), ['jquery'], '4.0.0', true);
+            wp_register_script($this->plugSlug . '-main-admin', plugins_url('admin/js/main.js', $this->plugPath), ['jquery', 'wp-api'], $this->version, true);
         }
 
         public function enqueueAssets($hook) {
             if ($hook && $hook == $this->menuId) {
-                wp_enqueue_style('bootstrap-css');
+                wp_enqueue_style('bootstrap');
                 wp_enqueue_style($this->plugSlug . '-main-admin-css');
                 add_action('admin_footer', [$this, 'setInFooter']);
             }
@@ -190,10 +189,9 @@ if (!class_exists('SkSknr_PluginAdmin')) {
          * Set .css,.js in footer
          */
         public function setInFooter() {
-            wp_enqueue_style($this->plugSlug . '-loader-admin-css');
-            wp_enqueue_script('bootstrap-js');
-            wp_enqueue_script($this->plugSlug . '-main-admin-js');
-            wp_enqueue_script('jquery-3.5');
+            wp_enqueue_style($this->plugSlug . '-loader-admin');
+            wp_enqueue_script('bootstrap');
+            wp_enqueue_script($this->plugSlug . '-main-admin');
         }
 
         private function getOptNm($prm) {

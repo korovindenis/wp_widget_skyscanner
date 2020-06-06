@@ -16,17 +16,17 @@ var hideLoader = false;
  */
 function setDefaultSettings(settingsJs) {
     if (settingsJs.default != true) {
-        $('.skyscanner-widget-container').html(settingsJs.wdgt);
+        jQuery('.skyscanner-widget-container').html(settingsJs.wdgt);
     }
-    $("#success_msg").hide();
-    $("#failed_msg").hide();
-    $("[class^=FormRow_FormRow]").first().empty();
-    $("[class^=BpkText_bpk]").empty();
-    $("[class*=codeContainer]").hide();
-    $("div[class^=BpkRadio_bpk-radio").hide();
-    $("[class^=ExtraActionsBlock_ExtraActionsBlock]").empty();
-    $(".loader").hide();
-    $("#main_container").removeClass("off_data");
+    jQuery("#success_msg").hide();
+    jQuery("#failed_msg").hide();
+    jQuery("[class^=FormRow_FormRow]").first().empty();
+    jQuery("[class^=BpkText_bpk]").empty();
+    jQuery("[class*=codeContainer]").hide();
+    jQuery("div[class^=BpkRadio_bpk-radio").hide();
+    jQuery("[class^=ExtraActionsBlock_ExtraActionsBlock]").empty();
+    jQuery(".loader").hide();
+    jQuery("#main_container").removeClass("off_data");
 }
 
 /**
@@ -35,10 +35,10 @@ function setDefaultSettings(settingsJs) {
  *   2. Show content on page
  */
 document.body.addEventListener("DOMSubtreeModified", function () {
-    if ($("[class^=PoweredBySkyscanner]").is(":visible") && hideLoader != true) {
+    if (jQuery("[class^=PoweredBySkyscanner]").is(":visible") && hideLoader != true) {
         hideLoader = true;
 
-        $.ajax({
+        jQuery.ajax({
             type: "GET",
             url: pluginParams.restApiUrl + "WidgetFormSettings/",
             beforeSend: function (e) {
@@ -57,15 +57,15 @@ document.body.addEventListener("DOMSubtreeModified", function () {
  *    1. save_button
  *    2. reload_button
  */
-$("button").on("click", function () {
+jQuery("button").on("click", function () {
     var idBoxMsg = "#success_msg";
     var showTime = 3000;
     var currentBtn = this;
-    var btnId = $(currentBtn).attr("id");
-    var sendData = (btnId == "save_button") ? $(".bpk-code").text() : "NULL";
+    var btnId = jQuery(currentBtn).attr("id");
+    var sendData = (btnId == "save_button") ? jQuery(".bpk-code").text() : "NULL";
 
-    $(currentBtn).addClass("disabled");
-    $.ajax({
+    jQuery(currentBtn).addClass("disabled");
+    jQuery.ajax({
         type: "POST",
         url: pluginParams.restApiUrl + "WidgetFormSettings/",
         data: JSON.stringify({
@@ -76,10 +76,10 @@ $("button").on("click", function () {
             e.setRequestHeader("X-WP-Nonce", wpApiSettings.nonce);
         },
         complete: function () {
-            $(idBoxMsg).show();
+            jQuery(idBoxMsg).show();
             setTimeout(() => {
-                $(idBoxMsg).hide();
-                $(currentBtn).removeClass("disabled");
+                jQuery(idBoxMsg).hide();
+                jQuery(currentBtn).removeClass("disabled");
             }, showTime);
             if (btnId == "reset_button") {
                 location.reload(true);
