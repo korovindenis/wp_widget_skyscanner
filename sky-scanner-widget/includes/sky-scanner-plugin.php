@@ -79,7 +79,7 @@ if (!class_exists('SkSknr_InitPlugin')) {
          */
         public function addLinks($links) {
             $links[] = '<a href="' . esc_url(admin_url('admin.php?page=' . $this->plugSlug)) . '">' . esc_html__('Settings', $this->textDomain) . '</a>';
-            $links[] = '<a href="https://codecanyon.net/user/skyengineers/" target="_blank">' . esc_html__('More plugins by', $this->textDomain) . ' SkyEngineers</a>';
+            $links[] = '<a href="https://codecanyon.net/user/skyengineers/" target="_blank">' . esc_html__('More plugins by SkyEngineers', $this->textDomain) . '</a>';
 
             return $links;
         }

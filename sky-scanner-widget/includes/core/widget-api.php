@@ -58,7 +58,7 @@ if (!class_exists('SkSknr_RestApiPlugin')) {
             if (!method_exists($this, $endpoint_handler_name)) {
                 return new \WP_REST_Response([
                     'status' => false,
-                    'error' => sprintf('Unknown endpoint "%s/%s"', $method, $endpoint)
+                    'error' => sprintf(esc_html__('Unknown endpoint', $this->textDomain) . ' "%s/%s"', $method, $endpoint)
                 ], 400);
             }
 
