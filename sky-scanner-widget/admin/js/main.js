@@ -20,7 +20,6 @@ function setDefaultSettings(settingsJs) {
     }
     jQuery("#success_msg").hide();
     jQuery("#failed_msg").hide();
-    jQuery("[class^=FormRow_FormRow]").first().empty();
     jQuery("[class^=BpkText_bpk]").empty();
     jQuery("[class*=codeContainer]").hide();
     jQuery("div[class^=BpkRadio_bpk-radio").hide();
